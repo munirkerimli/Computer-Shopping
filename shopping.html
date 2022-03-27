@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/shopping.js" defer></script>
+    <link rel="stylesheet" href="css/shopping.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="index.html" class="btn btn-dark">Əsas Səhifə</a>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <input type="search" id="category-search-input" class="form-control" placeholder="Axtarış..."
+                    oninput="searchCategory(this)">
+                <br>
+                <div id="computer-categories-div"></div>
+            </div>
+            <div class="col-sm-9">
+                <div id="computers-loading">
+                    <div class="spinner-border"></div>
+                </div>
+                <div id="computers-div"></div>
+                <div id="computers-loading-next">
+                    <div class="spinner-border"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="button" class="btn btn-secondary" id="open-basket-button" onclick="onOpenBasket()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart"
+            viewBox="0 0 20 20">
+            <path
+                d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z">
+            </path>
+        </svg>
+        <span id="basket-computer-count" class="badge badge-white">0</span>
+    </button>
+
+    <div id="computer-details-modal">
+        <div id="computer-details-modal-content">
+            <span class="h2" style="text-align: center;">Komputer haqqında ətraflı məlumat</span>
+            <div id="computer-modal-image-container"></div>
+            <div id="computer-modal-name">Ad: </div>
+            <div id="computer-modal-description">Təsvir: </div>
+            <div id="computer-modal-price">Qiymət: </div>
+            <div id="computer-modal-phone">Telefon: </div>
+            <div id="computer-modal-isNew">Yeni: </div>
+            <div id="computer-modal-ram">Ram: </div>
+            <div id="computer-modal-cpu">Prosessor: </div>
+            <div id="computer-modal-drive">Daimi yaddaş: </div>
+            <div id="computer-modal-drive-type">Daimi yaddaş tipi: </div>
+            <div id="computer-modal-os">Əməliyyat sistemi: </div>
+        </div>
+    </div>
+
+    <div id="basket-modal">
+        <div id="basket-modal-content" style="overflow-x: auto;">
+            <div style="overflow: auto; margin-bottom: 5px;">
+                <span id="basket-modal-close-button">x</span>
+            </div>
+            <span class="h1" style="text-align: center;"></span>
+            <table class="basket-table table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Şəkil</th>
+                        <th>Ad</th>
+                        <th>Qiymət</th>
+                        <th>Miqdar</th>
+                        <th>Ümumi Qiymət</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="basket-computers-table-body"></tbody>
+            </table>
+            <div style="overflow: auto;">
+                <span id="basket-total-price">
+                    Ümumi qiymət
+                    <span id="basket-total-price-content">0</span> AZN
+                </span>
+
+                <button id="clear-basket-button" class="btn btn-danger" onclick="clearBasket()">Səbəti təmizlə</button>
+                <button id="confirm-order-button" class="btn btn-success" onclick="confirmOrder()">Sifarişi
+                    təsdiqlə</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-order-modal">
+        <div id="confirm-order-modal-content">
+            <div style="overflow: auto; margin-bottom: 5px;">
+                <span id="confirm-order-modal-close-button">x</span>
+            </div>
+            <span class="h1" style="text-align: center;">Əlaqə məlumatlarınızı yazin</span>
+            <div id="confirm-order-modal-form-div">
+                <form action="" id="confirm-order-modal-form" class="was-validated" onsubmit="onOrderSubmit(event)">
+                    <div class="form-group">
+                        <label for="customer-name">Ad:</label>
+                        <input type="text" name="customer-name" id="customer-name" placeholder="Adınızı yazin..."
+                            class="form-control" required minlength="2" maxlength="30">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">Boş qoymayın. Minimum 2, maximum 30 simvol ola bilər.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-address">Unvan:</label>
+                        <input type="text" name="customer-address" id="customer-address"
+                            placeholder="Ünvanınızı yazin..." class="form-control" required minlength="2"
+                            maxlength="30">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">Boş qoymayın. Minimum 2, maximum 30 simvol ola bilər.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-phone">Telefon:</label>
+                        <input type="text" name="customer-phone" id="customer-phone"
+                            placeholder="Əlaqə nömrənizi daxil edin..." class="form-control" required
+                            pattern="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">(xxx-xxx-xxxx) formatında olmalıdır.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-email">Email:</label>
+                        <input type="text" name="customer-email" id="customer-email"
+                            placeholder="E-Poçt ünvanınızı daxil edin..." class="form-control" required minlength="2"
+                            maxlength="30">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">Boş qoyamyın. Minimum 2, maximum 30 simvol ola bilər.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="customer-note">Qeyd:</label>
+                        <input type="text" name="customer-note" id="customer-note" placeholder="Qeydinizi yazın..."
+                            class="form-control" required minlength="2" maxlength="30">
+                        <div class="valid-feedback">Düzgündür.</div>
+                        <div class="invalid-feedback">Boş qoymayın. Minimum 2, maximum 30 simvol ola bilər.</div>
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" name="confirmation" class="form-check-input" required>
+                            Məlumatların doğruluğunu təsdiq edin.
+                            <div class="valid-feedback">Təsdiq etdiniz.</div>
+                            <div class="invalid-feedback">Təsdiq etməlisiniz.</div>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" onclick="onOrderSubmit(event)">Yadda saxla</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="fixed-elements"></div>
+    <input type="text" id="computer-search-input" class="form-control" placeholder="Axtarış..."
+        onkeydown="onSearchKeyDown(event)">
+</body>
+
+</html>

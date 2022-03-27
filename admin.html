@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/admin.js" defer></script>
+</head>
+
+<body>
+    <div class="container-fluid" id="main-content">
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="index.html" class="btn btn-primary">Əsas Səhifə</a>
+                <hr>
+                <h2 class="text-dark">Admin Səhifəsi</h2>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3 style="text-align: center;" class="text-dark">Kateqoriyalar</h3>
+                <input type="search" id="category-search-input" class="form-control" placeholder="Axtarış"
+                    oninput="searchCategory(this)">
+                <br>
+                <div id="computer-categories-div">
+
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <form class="was-validated" id="save-category-form" onsubmit="onSaveCategory(event)">
+                    <div class="form-group">
+                        <label for="category-name-input" class="text-dark">Kateqoriya</label>
+                        <input type="text" name="category-name-input" id="category-name-input" class="form-control"
+                            required minlength="2" maxlength="30" oninput="onCategoryNameChanged(this)">
+                        <div class="valid-feedback">Doğrudur.</div>
+                        <div class="invalid-feedback">Boş qoymayın. Minimum 2, maksimum 30 simvol ola bilər.</div>
+
+                    </div>
+                    <button type="submit" id="save-category-button" class="btn btn-primary">Qeydiyyat et</button>
+                    <button type="reset" id="reset-category-form-button" class="btn btn-warning"
+                        onclick="resetForm()">Təmizlə</button>
+                    <button type="button" id="delete-category-button" class="btn btn-danger">Sil</button>
+                </form>
+            </div>
+        </div><br><br>
+    </div>
+</body>
+
+</html>

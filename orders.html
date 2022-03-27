@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Sifarişlər</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css" />
+  <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+  <script src="js/orders.js" defer></script>
+  <link rel="stylesheet" href="css/orders.css" />
+
+  <script>
+    $(document).ready(function () {
+      console.log("orders-table begin");
+      $("#orders-table").DataTable();
+      console.log("orders-table end");
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container-fluid" style="display: none" id="main-content">
+    <hr />
+    <div class="row">
+      <div class="col-sm-12">
+        <a class="btn btn-dark" href="index.html">Əsas səhifə</a>
+        <hr />
+        <h1 style="text-align: center">Sifarişlərin siyahısı</h1>
+        <table class="table table-bordered" id="orders-table">
+          <thead>
+            <tr>
+              <th style="width: 3%">ID</th>
+              <th style="width: 10%">Tarix</th>
+              <th style="width: 30%">Müştəri</th>
+              <th style="width: 25%">Sifariş olunanlar</th>
+              <th style="width: 15%">Ümumi qiymət</th>
+              <th style="width: 17%">Qeyd</th>
+            </tr>
+          </thead>
+          <tbody id="orders-table-body" style="font-size: 14px"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

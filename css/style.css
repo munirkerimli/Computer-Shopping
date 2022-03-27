@@ -1,0 +1,24 @@
+body {
+     background-image: url("https://www.asus.com/WebsitesBanner/global/banners/polpbksjh4zfvzfd/polpbksjh4zfvzfd-0_0_desktop_1X.jpg");
+     background-position: center;
+     background-size: cover;
+     background-repeat: no-repeat;
+     height: 100vh;
+     width: 100%;
+     padding: 40px;
+}
+
+a {
+    padding-right: 30px;
+    font-family:"SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+a:hover {
+     color: wheat;
+     text-decoration: none;
+}

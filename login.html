@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script src="js/index.js"></script>
+  <script src="js/login.js" defer></script>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <title>Login Page</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>Hesaba daxil ol</header>
+    <hr>
+    <div class="alert alert-danger" id="login-error-alert" style="display: none;"></div>
+
+    <div class="alert alert-success" id="login-success-alert" style="display: none;"></div>
+    <form action="#" onsubmit="onLogin(event)">
+      <div class="field email">
+        <div class="input-area">
+          <input type="text" placeholder="Username" id="username">
+        </div>
+        <div class="error error-txt" id="username-blank-error">İstifadəçi adı boş qoyula bilməz!</div>
+      </div>
+      <div class="field password">
+        <div class="input-area">
+          <input type="password" placeholder="Password" id="password">
+        </div>
+        <div class="error error-txt" id="password-blank-error">Parol boş qoyula bilməz!</div>
+      </div>
+      <input type="submit" value="Log in">
+    </form>
+    <div class="sign-txt">hesabınız yoxdur? <a href="create-account.html">Hesab yarat</a></div>
+    <div class="sign-txt">Ana səhifəyə <a href="index.html">qayıt</a></div>
+  </div>
+
+</body>
+
+</html>

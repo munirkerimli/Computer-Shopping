@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap">
+   <script src="js/create-account.js" defer></script>
+   <link rel="stylesheet" href="css/index.css">
+   <link rel="stylesheet" href="css/create-account.css">
+   <title>Create Account Page</title>
+</head>
+
+<body>
+
+   <div class="container">
+      <div class="text">
+         Hesab yaratmaq
+      </div>
+      <hr>
+      <div class="alert alert-success" id="user-created-alert" style="display: none;"></div>
+      <div class="alert alert-danger" id="user-exists-error-alert" style="display: none;"></div>
+      <form action="#" onsubmit="onCreateAccount(event)">
+         <div class="data">
+            <label>Name</label>
+            <input type="text" required placeholder="Adınız" id="user-full-name">
+         </div>
+         <div class="data">
+            <label>Phone</label>
+            <input type="tel" required pattern="((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{4}" placeholder="(XXX-XXX-XXXX)"
+               id="user-phone-number">
+         </div>
+         <div class="data">
+            <label>Username</label>
+            <input type="text" required placeholder="İstifadəçi adınız" id="username">
+         </div>
+         <div class="data">
+            <label>Password</label>
+            <input type="password" required placeholder="Parolunuz" id="password">
+         </div>
+         <button type="submit" class="btn btn-success">Hesab yarat</button>
+         <div class="sign-txt text-center">Ana səhifəyə <a class="text-success" href="index.html">qayıt</a></div>
+      </form>
+   </div>
+
+</body>
+
+</html>
