@@ -1,15 +1,10 @@
 function onClearLocalStorage(){
      var result = confirm('Eminsiniz?');
+     let list = ['users', 'categories', 'logged-in-user-id', 'logged-in-user-name', 'computers', 'basketComputers', 'orders', 'customers', 'order-customers'];
      if(result){
-         localStorage.removeItem('users');
-         localStorage.removeItem('categories');
-         localStorage.removeItem('logged-in-user-id');
-         localStorage.removeItem('logged-in-user-name');
-         localStorage.removeItem('computers');
-         localStorage.removeItem('basketComputers');
-         localStorage.removeItem('orders');
-         localStorage.removeItem('customers');
-         localStorage.removeItem('order-customer');
+          for(let i = 0; i < list.length; i++){
+               localStorage.removeItem(list[i]);
+          }
          alert('Melumatlar sifirlandi')
      }
 }

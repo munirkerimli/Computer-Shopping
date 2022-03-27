@@ -8,11 +8,8 @@ var ordersBtn = document.getElementById('ordersBtn');
 var shoppingBtn = document.getElementById('shoppingBtn');
 
 var loginButton = document.getElementById('loginBtn');
-
 var logoutButton = document.getElementById('logoutBtn');
-
 var adminPageButton = document.getElementById('adminPageBtn');
-
 var userLoggedIn = false;
 
 var loggedInUserId = localStorage.getItem('logged-in-user-id');
@@ -68,33 +65,22 @@ function onLogout(){
 }
 
 function addObjects(){
-    // Add users
-    users.push({id: 1, name: 'User-1', phone: '055-885-90-10', username: 'u1', password: 'p1'});
-    users.push({id: 2, name: 'User-2', phone: '055-885-90-10', username: 'u2', password: 'p2'});
-    users.push({id: 3, name: 'User-3', phone: '055-885-90-10', username: 'u3', password: 'p3'});
-    users.push({id: 4, name: 'User-4', phone: '055-885-90-10', username: 'u4', password: 'p4'});
-    users.push({id: 5, name: 'User-5', phone: '055-885-90-10', username: 'u5', password: 'p5'});
+    for(let i = 1; i < 6; i++){
+        users.push({id: i, name: `User-${i}`, phone: '055-885-90-10', username: `u${i}`, password: `p${i}`});
+    }
     users.push({id: 6, name: 'Admin', phone: '055-885-90-10', username: 'admin', password: 'admin'});
 
     // Add categories
-    categories.push({id: 1, name: 'Acer'});
-    categories.push({id: 2, name: 'HP'});
-    categories.push({id: 3, name: 'Asus'});
-    categories.push({id: 4, name: 'Dell'});
-    categories.push({id: 5, name: 'Lenovo'});
+    let nameList = ['Acer', 'HP', 'Asus', 'Dell', 'Lenovo']
+    for(let i = 0; i < nameList.length; i++){
+        categories.push({id: i+1, name: nameList[i]});
+    }
 
     // Add computers - Acer
-    computers.push({id: 1, name: 'Acer-1', price: 570, description: 'Acer-1 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 2, name: 'Acer-2', price: 570, description: 'Acer-2 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 3, name: 'Acer-3', price: 570, description: 'Acer-3 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 4, name: 'Acer-4', price: 570, description: 'Acer-4 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 5, name: 'Acer-5', price: 570, description: 'Acer-5 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 6, name: 'Acer-6', price: 570, description: 'Acer-6 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 7, name: 'Acer-7', price: 570, description: 'Acer-7 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 8, name: 'Acer-8', price: 570, description: 'Acer-8 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 9, name: 'Acer-9', price: 570, description: 'Acer-9 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-    computers.push({id: 10, name: 'Acer-10', price: 570, description: 'Acer-10 desc', isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
-
+    for(let i = 1; i < 11; i++){
+        computers.push({id: i, name: `Acer-${i}`, price: 570, description: `Acer-${i} desc`, isNew: false, imagePath: 'images/acer.jpg',userId: 1, categoryId:1});
+    }
+    
     var idCounter = 40;
     for(let i = 0 ; i< 40; i++){
         idCounter++;
@@ -230,22 +216,17 @@ console.log('Butun komputerlerin sayi: '+computers.length);
 console.log('userlerin sayi = '+users.length);
 
 function onClearLocalStorage(){
-    localStorage.removeItem('users');
-    localStorage.removeItem('categories');
-    localStorage.removeItem('computers');
-    localStorage.removeItem('basketComputers');
-    localStorage.removeItem('orders');
-    localStorage.removeItem('customers');
-    localStorage.removeItem('order-customer');
-    localStorage.removeItem('logged-in-user-id');
+    let removeList = ['users', 'categories', 'computers', 'basketComputers', 'orders', 'customers', 'order-customers', 'logged-in-user-id'];
+    for(let i = 0; i < removeList.length; i++){
+        localStorage.removeItem(removeList[i]);    
+    }
     window.location.reload();
 }
 
 var customers = [];
-customers.push({id: 1, name: 'Customer-1', address: 'Customer-1 address', phone: '055-234-5678', email: 'customer1@gmail.com'});
-customers.push({id: 2, name: 'Customer-2', address: 'Customer-2 address', phone: '055-234-5678', email: 'customer2@gmail.com'});
-customers.push({id: 3, name: 'Customer-3', address: 'Customer-3 address', phone: '055-234-5678', email: 'customer3@gmail.com'});
-customers.push({id: 4, name: 'Customer-4', address: 'Customer-4 address', phone: '055-234-5678', email: 'customer4@gmail.com'});
+for(let i = 1; i < 5; i++){
+    customers.push({id: i, name: `Customer-${i}`, address: `Customer-${i} address`, phone: '055-234-5678', email: `customer${i}@gmail.com`});
+}
 
 
 var customersString  = localStorage.getItem('customers');
