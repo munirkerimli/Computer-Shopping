@@ -8,11 +8,8 @@ var ordersBtn = document.getElementById('ordersBtn');
 var shoppingBtn = document.getElementById('shoppingBtn');
 
 var loginButton = document.getElementById('loginBtn');
-
 var logoutButton = document.getElementById('logoutBtn');
-
 var adminPageButton = document.getElementById('adminPageBtn');
-
 var userLoggedIn = false;
 
 var loggedInUserId = localStorage.getItem('logged-in-user-id');
